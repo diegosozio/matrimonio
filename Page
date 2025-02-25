@@ -1,0 +1,196 @@
+Diego, [25/02/25 10:43]
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrimonio di Laura & Diego</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lovely+Coffee&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: "Lovely Coffee", cursive;
+            text-align: center;
+            background-color: #fdfaf5;
+            color: #6d5d4b;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.5s ease;
+        }
+
+        header {
+            background-color: #f3e7dc;
+            padding: 20px;
+            font-size: 1.2em;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #a78d7b;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        h2 {
+            color: #a78d7b;
+        }
+
+        .section {
+            padding: 20px;
+            margin: 20px auto;
+            background-color: #fffdfa;
+            border-radius: 10px;
+            width: 80%;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e3d6c9;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1.5s ease-in-out forwards;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            text-decoration: none;
+            background-color: #c4a48a;
+            color: white;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .button:hover {
+            background-color: #a78d7b;
+        }
+
+        #countdown {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #a78d7b;
+            margin-top: 10px;
+            animation: pulse 1.5s infinite alternate;
+        }
+
+        /* Animazioni */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+
+        /* Galleria */
+        .gallery {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .gallery img {
+            width: 200px;
+            height: auto;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Musica */
+        #music-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #c4a48a;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Laura & Diego</h1>
+        <p>Ci sposiamo il <strong>18 Ottobre 2025</strong> e vogliamo festeggiare con voi!</p>
+        <p id="countdown"></p>
+    </header>
+
+    <section class="section">
+        <h2>📍 Dove e Quando</h2>
+        <p><strong>Cerimonia:</strong> Chiesa SS Maria del Carmine, Calore, Mirabella Eclano (AV)</p>
+        <p><strong>Orario:</strong> 11:00</p>
+        <p><strong>Ricevimento:</strong> Villa Orsini - Eventi & Ricevimenti, Via Sommito, Passo di Mirabella Eclano (AV)</p>
+    </section>
+
+   <section class="section">
+        <h2>🗺 Mappa - Chiesa</h2>
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d228.68636311730722!2d14.949997624592733!3d41.054339269113775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sit!2sit!4v1740472966719!5m2!1sit!2sit"
+            width="100%" height="300" style="border:0;" allowfullscreen>
+        </iframe>
+    </section>
+
+Diego, [25/02/25 10:43]
+<section class="section">
+        <h2>🗺 Mappa - Ricevimento</h2>
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2587.3597445987803!2d15.016319413635166!3d41.052591583187024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x133a29a69b338b25%3A0xd0845fcd62efc878!2sVILLA%20ORSINI%20-%20Eventi%20%26%20Ricevimenti!5e1!3m2!1sit!2sit!4v1740471933901!5m2!1sit!2sit" 
+            width="100%" height="300" style="border:0;" allowfullscreen>
+        </iframe>
+    </section>
+
+    <section class="section">
+    <h2>💌 Conferma la tua presenza</h2>
+    <p>Aiutaci nell'organizzazione, conferma la tua partecipazione!</p>
+    
+    <!-- Conferma via email -->
+    <a href="mailto:diego.sozio92@gmail.com,laura.dipeitro18@gmail.com?subject=Matrimonio Laura e Diego" class="button">📧 Conferma via Email</a>
+
+    <!-- Conferma via WhatsApp -->
+    <a id="whatsapp-btn" class="button" target="_blank">📱 Conferma via WhatsApp</a>
+    </section>
+
+    <script>
+    // WhatsApp Confirmation Message
+    document.getElementById("whatsapp-btn").href="https://api.whatsapp.com/send?phone=+393405407313&text=Ciao%20Laura%20e%20Diego!%20🎉%0A%0ASiamo%20felicissimi%20di%20partecipare%20al%20vostro%20matrimonio!%0A%0ASaremo%20in%20*%5Binserisci%20numero%5D*%20persone:%0A-%20%5BNome%201%5D%0A- %5BNome%202%5D%0A- %5BNome%203%5D%0A%0ANon%20vediamo%20l'ora%20di%20festeggiare%20con%20voi!%20💍💕" 
+    </script>
+
+    <footer>
+        <p>Con amore, Laura & Diego 💕</p>
+    </footer>
+
+
+    <script>
+        function updateCountdown() {
+            const weddingDate = new Date("October 18, 2025 11:00:00").getTime();
+            const now = new Date().getTime();
+            const timeLeft = weddingDate - now;
+
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML = ${days} giorni, ${hours} ore, ${minutes} minuti e ${seconds} secondi!;
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+    </script>
+
+</body>
+</html>
