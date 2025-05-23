@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Matrimonio di Laura & Diego</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lovely+Coffee&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lovely+Coffee&display=swap" rel="stylesheet" />
     <style>
         body {
             font-family: "Lovely Coffee", cursive;
@@ -16,33 +16,99 @@
             transition: background-color 0.5s ease;
         }
 
-        header {
-            background-color: #f3e7dc;
-            padding: 20px;
-            font-size: 1.2em;
+        img {
+            max-width: 100%;
+            height: auto;
         }
 
-        h1 {
-            font-size: 3em;
-            color: #a78d7b;
+        header {
+            min-height: 100vh;
+            background: url('img/sfondo.png') no-repeat center center;
+            background-size: cover;
+            color: #080808;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 4em;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
             animation: fadeIn 2s ease-in-out;
         }
 
-        h2 {
-            color: #a78d7b;
+        nav {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1em;
+            z-index: 3;
         }
 
-        .section {
-            padding: 20px;
-            margin: 20px auto;
+        nav a {
+            color: #080808;
+            text-decoration: none;
+            margin-left: 15px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+        }
+
+        h2 {
+            color: #080808;
+        }
+
+        .countdown-section {
+            background: #fffdfa;
+            padding: 80px 20px;
+        }
+
+        #countdown {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #080808;
+            margin-top: 10px;
+            animation: pulse 1.5s infinite alternate;
+        }
+
+        .our-story {
+            background-color: #efe5de;
+            color: #080808;
+            padding: 80px 20px;
+        }
+
+        .our-story p {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-size: 1.2em;
+            padding: 0 20px;
+        }
+
+        .cards-section {
+            background-color: #ffffff;
+            padding: 80px 20px;
+        }
+
+        .cards-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .card {
             background-color: #fffdfa;
-            border-radius: 10px;
-            width: 80%;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
             border: 1px solid #e3d6c9;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 1.5s ease-in-out forwards;
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            color: #080808;
+            text-align: center;
         }
 
         .button {
@@ -54,29 +120,65 @@
             color: white;
             border-radius: 5px;
             transition: background 0.3s;
+            cursor: pointer;
         }
 
         .button:hover {
             background-color: #a78d7b;
         }
 
-        #countdown {
-            font-size: 1.8em;
-            font-weight: bold;
-            color: #a78d7b;
-            margin-top: 10px;
-            animation: pulse 1.5s infinite alternate;
+        .section-form {
+            padding: 80px 20px;
+            color: #080808;
+            background-color: white;
         }
 
-        /* Animazioni */
+        .map-container {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.heart-marker {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+
+
+        #whatsapp-btn {
+            margin-top: 30px;
+            display: block;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1.2em;
+            padding: 12px 0;
+            border-radius: 10px;
+            background-color: #c4a48a;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        #whatsapp-btn:hover {
+            background-color: #a78d7b;
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes pulse {
@@ -85,98 +187,131 @@
         }
 
         @media screen and (max-width: 600px) {
-        .button {
-        display: block;
-        margin: 10px auto; 
-        width: 80%; 
-        text-align: center;
-    }
-}
-
-
-        
+            .button {
+                display: block;
+                margin: 10px auto;
+                width: 80%;
+            }
+            .cards-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .card {
+                width: 90%;
+            }
+            .our-story p {
+                font-size: 1em;
+                padding: 0 10px;
+            }
+            .section-form {
+                padding: 40px 10px;
+            }
+            #rsvp-form {
+                padding: 40px 10px;
+            }
+            header h1 {
+                font-size: 2.5em;
+            }
+        }
     </style>
 </head>
 <body>
-
     <header>
         <h1>Laura & Diego</h1>
-        <p>Ci sposiamo il <strong>18 Ottobre 2025</strong> e vogliamo festeggiare con voi!</p>
-        <p id="countdown"></p>
+        <nav>
+            <a href="#cerimonia">Cerimonia</a>
+            <a href="#partecipa">Partecipa</a>
+        </nav>
     </header>
 
-    <section class="section">
+    <section class="countdown-section">
+        <img src="img/anelli.png" alt="anelli" />
+        <h2>18 Ottobre 202</h2>
+        <p id="countdown"></p>
+    </section>
+
+    <section class="our-story">
+        <h2>La nostra Storia</h2>
+        <p>C’erano due strade, distanti ma destinate a incrociarsi. Un giorno qualunque, in un luogo che sarebbe diventato speciale, i nostri sguardi si sono incontrati.</p> 
+        <p>Da quel momento, tutto ha iniziato a muoversi con un ritmo nuovo — il nostro.</p>
+        <p>Abbiamo costruito la nostra complicità passo dopo passo, tra risate leggere, conversazioni profonde, piccoli gesti quotidiani e sogni condivisi. In ogni viaggio, in ogni stagione, abbiamo scoperto quanto fosse bello avere l’altro accanto.</p>
+        <p>Con il tempo, quel filo invisibile che ci univa è diventato una promessa. Ed è proprio quella promessa che oggi ci porta qui, a questo giorno, a questo "per sempre" che non vediamo l’ora di vivere, mano nella mano.</p>
+            
+    </section>
+
+    <section class="cards-section" id="cerimonia">
         <h2>📍 Dove e Quando</h2>
-        <p><strong>Cerimonia:</strong> Chiesa SS Maria del Carmine, Calore, Mirabella Eclano (AV)</p>
-        <p><strong>Orario:</strong> 11:00</p>
-        <p><strong>Ricevimento:</strong> Villa Orsini - Eventi & Ricevimenti, Via Sommito, Passo di Mirabella Eclano (AV)</p>
+        <div class="cards-container">
+            <div class="card">
+                <img src="img/h2-icon-img-2.png" alt="anelli" />
+                <h3>Cerimonia</h3>
+                <p>Chiesa SS Maria del Carmine, Calore, Mirabella Eclano (AV)</p>
+                <p><strong>Orario:</strong> 11:00</p>
+                <a href="https://www.google.com/maps?q=41.054339269113775,14.949997624592733" class="button" target="_blank">📍 Vedi mappa</a>
+            </div>
+            <div class="card">
+                <img src="img/h2-icon-img-1.png" alt="calendario" />
+                <h3>Ricevimento</h3>
+                <p>Villa Orsini - Eventi & Ricevimenti, Via Sommito, Passo di Mirabella Eclano (AV)</p>
+                <p><strong>Orario:</strong> 14:00</p>
+                <a href="https://www.google.com/maps?q=41.052591583187024,15.016319413635166" class="button" target="_blank">📍 Vedi mappa</a>
+            </div>
+        </div>
     </section>
 
-   <section class="section">
-        <h2>🗺 Mappa - Chiesa</h2>
-        <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d228.68636311730722!2d14.949997624592733!3d41.054339269113775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sit!2sit!4v1740472966719!5m2!1sit!2sit"
-            width="100%" height="300" style="border:0;" allowfullscreen>
-        </iframe>
+    <section class="our-story">
+        <div class="map-container">
+            <iframe
+              src="https://www.google.com/maps?q=41.054339269113775,14.949997624592733&hl=it&z=15&output=embed"
+              allowfullscreen
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
     </section>
 
-<section class="section">
-        <h2>🗺 Mappa - Ricevimento</h2>
-        <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2587.3597445987803!2d15.016319413635166!3d41.052591583187024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x133a29a69b338b25%3A0xd0845fcd62efc878!2sVILLA%20ORSINI%20-%20Eventi%20%26%20Ricevimenti!5e1!3m2!1sit!2sit!4v1740471933901!5m2!1sit!2sit" 
-            width="100%" height="300" style="border:0;" allowfullscreen>
-        </iframe>
+    <section class="section-form" id="partecipa">
+        <h2>💌 Conferma la tua presenza</h2>
+        <p>Aiutaci nell'organizzazione, conferma la tua partecipazione!</p>
+        <div class="cards-container">
+            <div class="card">
+                <h3>📧 Conferma via Email</h3>
+                <p>Invia la tua conferma tramite email a Laura e Diego.</p>
+                <a href="mailto:diego.sozio92@gmail.com,laura.dipeitro18@gmail.com?subject=Matrimonio Laura e Diego&body=Ciao Laura e Diego! 🎉%0A%0ASiamo felicissimi di partecipare al vostro matrimonio!%0A%0ASaremo in *[inserisci numero]* persone:%0A- [Nome 1]%0A- [Nome 2]%0A- [Nome 3]%0A%0AEventuali Allergie o intolleranze alimentari:%0A- [Nome 1]: [Allergia/Intolleranza]%0A%0ANon vediamo l'ora di festeggiare con voi! 💍💕" class="button">Conferma via Email</a>
+            </div>
+            <div class="card">
+                <h3>📱 Conferma via WhatsApp</h3>
+                <p>Invia la tua conferma rapidamente via WhatsApp.</p>
+                <a id="whatsapp-btn" class="button" target="_blank" href="https://api.whatsapp.com/send?phone=+393405407313&text=Ciao Laura e Diego! 🎉%0A%0ASiamo felicissimi di partecipare al vostro matrimonio!%0A%0ASaremo in *[inserisci numero]* persone:%0A- [Nome 1]%0A- [Nome 2]%0A- [Nome 3]%0A%0AEventuali Allergie o intolleranze alimentari:%0A- [Nome 1]: [Allergia/Intolleranza]%0A%0ANon vediamo l'ora di festeggiare con voi! 💍💕"
+                >
+                    Conferma via WhatsApp
+                </a>
+            </div>
+        </div>
     </section>
-
-    <section class="section">
-    <h2>💌 Conferma la tua presenza</h2>
-    <p>Aiutaci nell'organizzazione, conferma la tua partecipazione!</p>
-    
-    <!-- Conferma via email -->
-    <a  id="email-btn" href="mailto:diego.sozio92@gmail.com,laura.dipeitro18@gmail.com?subject=Matrimonio Laura e Diego" class="button">📧 Conferma via Email</a>
-
-    <!-- Conferma via WhatsApp -->
-    <a id="whatsapp-btn" class="button" target="_blank">📱 Conferma via WhatsApp</a>
-    </section>
-
-    <script>
-    // WhatsApp Confirmation Message
-    document.getElementById("whatsapp-btn").href="https://api.whatsapp.com/send?phone=+393405407313&text=Ciao Laura e Diego! 🎉%0A%0ASiamo felicissimi di partecipare al vostro matrimonio!%0A%0ASaremo in *[inserisci numero]* persone:%0A- [Nome 1]%0A- [Nome 2]%0A- [Nome 3]%0A%0AEventuali Allergie o intolleranze alimentari:%0A- [Nome 1]: [Allergia/Intolleranza]%0A%0ANon vediamo l'ora di festeggiare con voi! 💍💕"
-    
-    document.getElementById("email-btn").href = 
-            "mailto:diego.sozio92@gmail.com,laura.dipeitro18@gmail.com"
-            + "?subject=Matrimonio Laura e Diego"
-            + "&body=Ciao Laura e Diego! 🎉%0A%0ASiamo felicissimi di partecipare al vostro matrimonio!%0A%0ASaremo in *[inserisci numero]* persone:%0A- [Nome 1]%0A- [Nome 2]%0A- [Nome 3]%0A%0AEventuali Allergie o intolleranze alimentari:%0A- [Nome 1]: [Allergia/Intolleranza]%0A%0ANon vediamo l'ora di festeggiare con voi! 💍💕";
-    
-    </script>
-
-    <footer>
-        <p>Con amore, Laura & Diego 💕</p>
-    </footer>
 
 
     <script>
         function updateCountdown() {
-        const weddingDate = new Date("October 18, 2025 11:00:00").getTime();
-        const now = new Date().getTime();
-        const timeLeft = weddingDate - now;
+            const weddingDate = new Date("October 18, 2025 11:00:00").getTime();
+            const now = Date.now();
+            const diff = weddingDate - now;
 
-        if (timeLeft > 0) {
-        const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            if (diff > 0) {
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-        document.getElementById("countdown").innerHTML = 
-            `${days} giorni, ${hours} ore, ${minutes} minuti e ${seconds} secondi!`;
-    } else {
-        document.getElementById("countdown").innerHTML = "🎉 È il grande giorno! 🎉";
+                document.getElementById("countdown").textContent = 
+                    `${days} giorni, ${hours} ore, ${minutes} minuti e ${seconds} secondi!`;
+            } else {
+                document.getElementById("countdown").textContent = "🎉 È il grande giorno! 🎉";
+            }
         }
-    }
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
 
+        setInterval(updateCountdown, 1000);
+        updateCountdown(); 
     </script>
-
 </body>
 </html>
