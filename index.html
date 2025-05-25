@@ -70,7 +70,6 @@
             font-weight: bold;
             color: #080808;
             margin-top: 10px;
-            animation: pulse 1.5s infinite alternate;
         }
 
         .our-story {
@@ -213,6 +212,56 @@
                 font-size: 2.5em;
             }
         }
+
+        .circle-countdown {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.time-circle {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    text-align: center;
+}
+
+.time-circle svg {
+    transform: rotate(-90deg);
+    width: 100%;
+    height: 100%;
+}
+
+.time-circle .bg {
+    fill: none;
+    stroke: #e0d6cc;
+    stroke-width: 8;
+}
+
+.time-circle .progress {
+    fill: none;
+    stroke: #c4a48a;
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-dasharray: 282.6; /* 2 * π * r (r=45) */
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 1s linear;
+}
+
+.time-circle .label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.6em; /* ridotto da 0.9em */
+    font-weight: bold;
+    color: #080808;
+    text-align: center;
+}
+
+
     </style>
 </head>
 <body>
@@ -227,8 +276,40 @@
     <section class="countdown-section">
         <img src="img/anelli.png" alt="anelli" />
         <h2>18 Ottobre 2025</h2>
-        <p id="countdown"></p>
+        <div id="countdown" class="circle-countdown">
+            <div class="time-circle" id="days">
+                <svg viewBox="0 0 100 100">
+                    <circle class="bg" cx="50" cy="50" r="45" />
+                    <circle class="progress" cx="50" cy="50" r="45" />
+                </svg>
+                <div class="label"><span class="number">0</span><br />Giorni</div>
+            </div>
+            <div class="time-circle" id="hours">
+                <svg viewBox="0 0 100 100">
+                    <circle class="bg" cx="50" cy="50" r="45" />
+                    <circle class="progress" cx="50" cy="50" r="45" />
+                </svg>
+                <div class="label"><span class="number">0</span><br />Ore</div>
+            </div>
+            <div class="time-circle" id="minutes">
+                <svg viewBox="0 0 100 100">
+                    <circle class="bg" cx="50" cy="50" r="45" />
+                    <circle class="progress" cx="50" cy="50" r="45" />
+                </svg>
+                <div class="label"><span class="number">0</span><br />Minuti</div>
+            </div>
+            <div class="time-circle" id="seconds">
+                <svg viewBox="0 0 100 100">
+                    <circle class="bg" cx="50" cy="50" r="45" />
+                    <circle class="progress" cx="50" cy="50" r="45" />
+                </svg>
+                <div class="label"><span class="number">0</span><br />Secondi</div>
+            </div>
+        </div>
+        
     </section>
+
+    
 
     <section class="our-story">
         <h2>La nostra Storia</h2>
@@ -240,7 +321,7 @@
     </section>
 
     <section class="cards-section" id="cerimonia">
-        <h2>📍 Dove e Quando</h2>
+        <h2>Dove e Quando</h2>
         <div class="cards-container">
             <div class="card">
                 <img src="img/h2-icon-img-2.png" alt="anelli" />
@@ -271,21 +352,17 @@
     </section>
 
     <section class="section-form" id="partecipa">
-        <h2>💌 Conferma la tua presenza</h2>
-        <p>Aiutaci nell'organizzazione, conferma la tua partecipazione!</p>
+        <h2>Conferma la tua presenza</h2>
         <div class="cards-container">
             <div class="card">
                 <h3>Conferma via Email</h3>
-                <p>Invia la tua conferma tramite email a Laura e Diego.</p>
+                <p>Invia la tua conferma tramite email.</p>
                 <a href="mailto:diego.sozio92@gmail.com,laura.dipeitro18@gmail.com?subject=Matrimonio Laura e Diego&body=Ciao Laura e Diego! 🎉%0A%0ASiamo felicissimi di partecipare al vostro matrimonio!%0A%0ASaremo in *[inserisci numero]* persone:%0A- [Nome 1]%0A- [Nome 2]%0A- [Nome 3]%0A%0AEventuali Allergie o intolleranze alimentari:%0A- [Nome 1]: [Allergia/Intolleranza]%0A%0ANon vediamo l'ora di festeggiare con voi! 💍💕" class="button">Conferma via Email</a>
             </div>
             <div class="card">
                 <h3>Conferma via WhatsApp</h3>
-                <p>Invia la tua conferma rapidamente via WhatsApp.</p>
-                <a id="whatsapp-btn" class="button" target="_blank" href="https://api.whatsapp.com/send?phone=+393405407313&text=Ciao Laura e Diego! 🎉%0A%0ASiamo felicissimi di partecipare al vostro matrimonio!%0A%0ASaremo in *[inserisci numero]* persone:%0A- [Nome 1]%0A- [Nome 2]%0A- [Nome 3]%0A%0AEventuali Allergie o intolleranze alimentari:%0A- [Nome 1]: [Allergia/Intolleranza]%0A%0ANon vediamo l'ora di festeggiare con voi! 💍💕"
-                >
-                    Conferma via WhatsApp
-                </a>
+                <p>Invia la tua conferma tramite WhatsApp.</p>
+                <a id="whatsapp-btn" class="button" target="_blank" href="https://api.whatsapp.com/send?phone=+393405407313&text=Ciao Laura e Diego! 🎉%0A%0ASiamo felicissimi di partecipare al vostro matrimonio!%0A%0ASaremo in *[inserisci numero]* persone:%0A- [Nome 1]%0A- [Nome 2]%0A- [Nome 3]%0A%0AEventuali Allergie o intolleranze alimentari:%0A- [Nome 1]: [Allergia/Intolleranza]%0A%0ANon vediamo l'ora di festeggiare con voi! 💍💕">Conferma via WhatsApp</a>
             </div>
         </div>
     </section>
@@ -293,25 +370,47 @@
 
     <script>
         function updateCountdown() {
-            const weddingDate = new Date("October 18, 2025 11:00:00").getTime();
-            const now = Date.now();
-            const diff = weddingDate - now;
+    const weddingDate = new Date("October 18, 2025 11:00:00").getTime();
+    const now = Date.now();
+    const diff = weddingDate - now;
 
-            if (diff > 0) {
-                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    const daysElem = document.querySelector("#days .number");
+    const hoursElem = document.querySelector("#hours .number");
+    const minutesElem = document.querySelector("#minutes .number");
+    const secondsElem = document.querySelector("#seconds .number");
 
-                document.getElementById("countdown").textContent = 
-                    `${days} giorni, ${hours} ore, ${minutes} minuti e ${seconds} secondi!`;
-            } else {
-                document.getElementById("countdown").textContent = "🎉 È il grande giorno! 🎉";
-            }
-        }
+    const circleDays = document.querySelector("#days .progress");
+    const circleHours = document.querySelector("#hours .progress");
+    const circleMinutes = document.querySelector("#minutes .progress");
+    const circleSeconds = document.querySelector("#seconds .progress");
 
-        setInterval(updateCountdown, 1000);
-        updateCountdown(); 
+    const r = 45;
+    const circumference = 2 * Math.PI * r;
+
+    if (diff > 0) {
+        const totalDays = Math.floor((weddingDate - new Date("2025-01-01").getTime()) / (1000 * 60 * 60 * 24));
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        daysElem.textContent = days;
+        hoursElem.textContent = hours;
+        minutesElem.textContent = minutes;
+        secondsElem.textContent = seconds;
+
+        circleDays.style.strokeDashoffset = circumference * (1 - days / totalDays);
+        circleHours.style.strokeDashoffset = circumference * (1 - hours / 24);
+        circleMinutes.style.strokeDashoffset = circumference * (1 - minutes / 60);
+        circleSeconds.style.strokeDashoffset = circumference * (1 - seconds / 60);
+    } else {
+        document.getElementById("countdown").innerHTML = "<p>🎉 È il grande giorno! 🎉</p>";
+    }
+}
+
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
     </script>
 </body>
 </html>
